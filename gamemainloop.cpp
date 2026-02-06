@@ -3,8 +3,15 @@
 #include<string>
 #include<iostream>
 #include<vector>
+#include<chrono>
+#include<random>
 
+extern double gameDevelopmentFactor;
 
+void randomInitialization(){
+    std::mt19937 engine(std::chrono::system_clock::now().time_since_epoch().count());
+    std::uniform_int_distribution<int>int_dist(1,1000000);
+}
 
 void setShowMode(){
 
@@ -36,8 +43,8 @@ void dailyUpdate(){
 
 }
 //currentTime是指原来的时间，返回的时间是更新后的时间
-time timeUpdate(time currentTime,int changedMinute){
-    time updatedTime=currentTime;
+gameTime timeUpdate(gameTime currentTime,int changedMinute){
+    gameTime updatedTime=currentTime;
 
     updatedTime.minute=(currentTime.minute+(changedMinute%60))%60;
 
@@ -59,15 +66,17 @@ time timeUpdate(time currentTime,int changedMinute){
     return updatedTime;
 }
 
-/*
-关于物品id
-首先把所有的物品读入对应的类型组中，不同的物品处理方式有差异
-
-*/
-
-int exitGame(){
-    return 0;
+gameTime setTime(int day,int hour,int minute){
+    gameTime time={day,hour,minute};
+    return time;
 }
+
+void calculateGameDevelopmentFactor(gameTime currentTime){
+
+};
+
+
+
 
 
 

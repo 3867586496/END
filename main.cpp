@@ -5,6 +5,7 @@
 #include"gamemainloop.h"
 
 double gameLevelFactor=0;
+double gameDevelopmentFactor=0;
 
 bool isEndlessMode=false;
 bool isStoryMode=false;

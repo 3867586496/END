@@ -2,18 +2,23 @@
 #define GAMEMAINLOOP_H
 #include<string>
 #include<vector>
-void setShowMode();
-void clearConsole();
+/*
+关于时间处理逻辑
+改变的时间统一使用分钟来计算
+*/
+struct gameTime{
+    int day;
+    int hour;
+    int minute;
+};
 
-std::string getInputChoose();
 
-void initialize();
-void hourUpdate();
-void daylyUpdate();
+
+
 
 struct consumables{
     std::string name;
-    int itemId;
+    
     int quantity;
     int level;
     int satiety;
@@ -24,7 +29,8 @@ struct consumables{
 
 struct weapon{
     std::string name;
-    int itemId;
+    
+    int level;
     int quantity;
     int damage;
     int useStamina;
@@ -33,9 +39,29 @@ struct weapon{
 
 struct armor{
     std::string name;
-    int itemId;
+
+    int level;
+    
     int quantity;
     int armorValue;
+};
+
+struct material{
+    std::string name;
+    int level;
+};
+//type指的是前面定义的几类
+struct item{
+    std::string type;
+    consumables comsumables;
+    weapon weapon;
+    armor armor;
+    material material; 
+};
+
+struct itemDetail{
+    item item;
+    int quantity;
 };
 
 class enemy{
@@ -51,6 +77,9 @@ class enemy{
     weapon ownWeapon;
     armor ownArmor;
 };
+
+
+
 class character{
 
 };
@@ -58,17 +87,36 @@ class bag{
     
 };
 
-class area{
+struct chest{
+    int level;
+    std::vector<itemDetail> itemDetail;
+};
+
+struct room{
+    std::vector<chest> chest;
+    std::vector<enemy> enemy;
+};
+
+struct building{
+    std::vector<room> roomList;
+};
+
+struct area{
     int areaId;
+    std::vector<building> buildingList;
 };
-/*
-关于时间处理逻辑
-改变的时间统一使用分钟来计算
-*/
-struct time{
-    int day;
-    int hour;
-    int minute;
-};
+
+void calculateGameDevelopmentFactor(gameTime currentTime);
+
+void setShowMode();
+void clearConsole();
+
+std::string getInputChoose();
+
+void initialize();
+void hourUpdate();
+void dailyUpdate();
+
+gameTime timeUpdate(gameTime currentTime,int changedMinute);
 
 #endif
