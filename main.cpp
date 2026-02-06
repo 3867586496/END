@@ -4,7 +4,7 @@
 #include"menu.h"
 #include"gamemainloop.h"
 
-double gamelevelFactor=0;
+double gameLevelFactor=0;
 
 bool isEndlessMode=false;
 bool isStoryMode=false;

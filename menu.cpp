@@ -4,6 +4,7 @@
 #include"menu.h"
 #include"gamemainloop.h"
 #include<fstream>
+#include<limits>
 
 extern bool isStoryMode;
 extern bool isEndlessMode;
@@ -16,6 +17,7 @@ std::vector<menuReferenceList> menu::menuList;
 //显示菜单
 void menu::showCurrentMenu(){
     if (menu::searchThisMenuNameIndex()!=-1){
+        clearConsole();
         std::cout<<menu::menuList[menu::searchThisMenuNameIndex()].thisMenuContent<<std::endl;
     }
     else{
@@ -82,10 +84,13 @@ void menu::readMenuList(){
 //处理菜单的操作
 void menu::handleMenuInput(bool &isContinueGame){
     if(menuPosition=="startMenu"){
-        handleStartMenuInput(getInputChoose(),isContinueGame);
+        menu::handleStartMenuInput(getInputChoose(),isContinueGame);
     }
     else if(menuPosition=="chooseGameModeMenu"){
-        handleChooseGameModeMenuInput(getInputChoose());
+        menu::handleChooseGameModeMenuInput(getInputChoose());
+    }
+    else if(menuPosition=="chooseGameLevelMenu"){
+        menu::handleChooseGameLevelMenuInput(getInputChoose());
     }
     
 }
@@ -93,7 +98,7 @@ void menu::handleMenuInput(bool &isContinueGame){
 void menu::handleStartMenuInput(std::string operation,bool &isContinueGame){
     if(operation=="1"){
         menuPosition="chooseGameModeMenu";
-        menu::showCurrentMenu();
+        
     }else if(operation=="5"){
         isContinueGame = false;
     }
@@ -118,15 +123,43 @@ void menu::handleStartMenuInput(std::string operation,bool &isContinueGame){
 void menu::handleChooseGameModeMenuInput(std::string operation){
     if(operation=="1"){
         menuPosition="chooseGameLevelMenu";
-        menu::showCurrentMenu();
+        
         isStoryMode=true;
     }
     else if(operation=="2"){
         menuPosition="chooseGameLevelMenu";
-        menu::showCurrentMenu();
+        
         isEndlessMode=true;
     }
     else{
+        std::cout<<"非法操作"<<std::endl;
+    }
+}
+
+void menu::handleChooseGameLevelMenuInput(std::string operation){
+    if(operation=="1"){
+        gameLevelFactor=0.5;
+    }
+    else if(operation=="2"){
+        gameLevelFactor=1;
+    }
+    else if(operation=="3"){
+        gameLevelFactor=2;
+    }
+    else if(operation=="4"){
+        gameLevelFactor=3;
+    }
+    else if(operation=="5"){
+        gameLevelFactor=5;
+    }
+    else if(operation=="6"){
+        std::cout<<"请输入难度："<<std::endl;
+        while(!(std::cin>>gameLevelFactor)){
+            std::cin.clear();
+            std::cin.std::istream::ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+            std::cout<<"请正常输入难度："<<std::endl;
+        }
+    }else{
         std::cout<<"非法操作"<<std::endl;
     }
 }

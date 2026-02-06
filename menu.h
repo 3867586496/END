@@ -22,9 +22,8 @@ class menu{
     void handleMenuInput(bool &isContinueGame);
 
     void handleStartMenuInput(std::string operation,bool  &isContinueGame);
-
     void handleChooseGameModeMenuInput(std::string operation);
-    
+    void handleChooseGameLevelMenuInput(std::string operation);
 
 
     
