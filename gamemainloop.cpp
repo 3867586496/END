@@ -2,6 +2,7 @@
 #include<windows.h>
 #include<string>
 #include<iostream>
+#include<vector>
 
 
 
@@ -31,8 +32,31 @@ void hourUpdate(){
 
 }
 
-void daylyUpdate(){
+void dailyUpdate(){
 
+}
+//currentTime是指原来的时间，返回的时间是更新后的时间
+time timeUpdate(time currentTime,int changedMinute){
+    time updatedTime=currentTime;
+
+    updatedTime.minute=(currentTime.minute+(changedMinute%60))%60;
+
+    
+    updatedTime.hour+=(currentTime.minute+changedMinute)/60;
+
+    for(int i =0;i<(currentTime.minute+changedMinute)/60;i++){
+        hourUpdate();
+    }
+    
+    if(updatedTime.hour>=24){
+        updatedTime.day+=updatedTime.hour/24;
+        updatedTime.hour=updatedTime.hour%24;
+
+        for(int i =0;i<updatedTime.hour/24;i++){
+            dailyUpdate();
+        }
+    }
+    return updatedTime;
 }
 
 /*

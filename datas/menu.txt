@@ -4,3 +4,5 @@ thisMenuName:chooseGameModeMenu
 thisMenuContent:1.剧情游戏 2.无尽游戏
 thisMenuName:chooseGameLevelMenu
 thisMenuContent:1.简单 2.普通 3.较难 4.地狱 5.不可能 6.自定义
+thisMenuName:gameMainMenu
+thisMenuContent:1.显示地图 2.显示背包

@@ -9,6 +9,8 @@ double gameLevelFactor=0;
 bool isEndlessMode=false;
 bool isStoryMode=false;
 
+bool isMainGameRunning=false;
+
 bool isContinueGame=true;
 
 
@@ -22,6 +24,9 @@ int main(){
         mainMenu.showCurrentMenu();
         
         mainMenu.handleMenuInput(isContinueGame);
+        if(isMainGameRunning){
+
+        }
 
 
     }

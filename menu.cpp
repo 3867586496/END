@@ -9,6 +9,8 @@
 extern bool isStoryMode;
 extern bool isEndlessMode;
 
+extern bool isMainGameRunning;
+
 extern double gameLevelFactor;
 
 //定义变量
@@ -139,18 +141,33 @@ void menu::handleChooseGameModeMenuInput(std::string operation){
 void menu::handleChooseGameLevelMenuInput(std::string operation){
     if(operation=="1"){
         gameLevelFactor=0.5;
+        if(isEndlessMode){
+            menuPosition="gameMainMenu";
+        }
     }
     else if(operation=="2"){
         gameLevelFactor=1;
+        if(isEndlessMode){
+            menuPosition="gameMainMenu";
+        }
     }
     else if(operation=="3"){
         gameLevelFactor=2;
+        if(isEndlessMode){
+            menuPosition="gameMainMenu";
+        }
     }
     else if(operation=="4"){
         gameLevelFactor=3;
+        if(isEndlessMode){
+            menuPosition="gameMainMenu";
+        }
     }
     else if(operation=="5"){
         gameLevelFactor=5;
+        if(isEndlessMode){
+            menuPosition="gameMainMenu";
+        }
     }
     else if(operation=="6"){
         std::cout<<"请输入难度："<<std::endl;
@@ -158,6 +175,9 @@ void menu::handleChooseGameLevelMenuInput(std::string operation){
             std::cin.clear();
             std::cin.std::istream::ignore(std::numeric_limits<std::streamsize>::max(),'\n');
             std::cout<<"请正常输入难度："<<std::endl;
+        }
+        if(isEndlessMode){
+            menuPosition="gameMainMenu";
         }
     }else{
         std::cout<<"非法操作"<<std::endl;

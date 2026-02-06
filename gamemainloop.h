@@ -1,6 +1,7 @@
 #ifndef GAMEMAINLOOP_H
 #define GAMEMAINLOOP_H
 #include<string>
+#include<vector>
 void setShowMode();
 void clearConsole();
 
@@ -55,6 +56,19 @@ class character{
 };
 class bag{
     
+};
+
+class area{
+    int areaId;
+};
+/*
+关于时间处理逻辑
+改变的时间统一使用分钟来计算
+*/
+struct time{
+    int day;
+    int hour;
+    int minute;
 };
 
 #endif
