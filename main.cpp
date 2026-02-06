@@ -4,15 +4,18 @@
 #include"menu.h"
 #include"gamemainloop.h"
 
+double gamelevelFactor=0;
 
+bool isEndlessMode=false;
+bool isStoryMode=false;
 
+bool isContinueGame=true;
 
 
 int main(){
 
     setShowMode();
 
-    bool isContinueGame=1;
     menu mainMenu;
 
     while(isContinueGame){

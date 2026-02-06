@@ -5,9 +5,15 @@
 #include"gamemainloop.h"
 #include<fstream>
 
+extern bool isStoryMode;
+extern bool isEndlessMode;
+
+extern double gameLevelFactor;
+
+//定义变量
 std::string menu::menuPosition;
 std::vector<menuReferenceList> menu::menuList;
-
+//显示菜单
 void menu::showCurrentMenu(){
     if (menu::searchThisMenuNameIndex()!=-1){
         std::cout<<menu::menuList[menu::searchThisMenuNameIndex()].thisMenuContent<<std::endl;
@@ -26,7 +32,7 @@ int menu::searchThisMenuNameIndex(){
     }
     return -1;
 }
-
+//读取列表
 void menu::readMenuList(){
     std::string temp;
     std::ifstream inReadMenu("datas/menu.txt",std::ios::in);
@@ -73,10 +79,13 @@ void menu::readMenuList(){
         menu::menuPosition = "startMenu";
         menu::readMenuList();
 }
-
+//处理菜单的操作
 void menu::handleMenuInput(bool &isContinueGame){
     if(menuPosition=="startMenu"){
         handleStartMenuInput(getInputChoose(),isContinueGame);
+    }
+    else if(menuPosition=="chooseGameModeMenu"){
+        handleChooseGameModeMenuInput(getInputChoose());
     }
     
 }
@@ -104,4 +113,20 @@ void menu::handleStartMenuInput(std::string operation,bool &isContinueGame){
     //     menuPosition="chooseGameModeMenu";
     // }
     
+}
+
+void menu::handleChooseGameModeMenuInput(std::string operation){
+    if(operation=="1"){
+        menuPosition="chooseGameLevelMenu";
+        menu::showCurrentMenu();
+        isStoryMode=true;
+    }
+    else if(operation=="2"){
+        menuPosition="chooseGameLevelMenu";
+        menu::showCurrentMenu();
+        isEndlessMode=true;
+    }
+    else{
+        std::cout<<"非法操作"<<std::endl;
+    }
 }

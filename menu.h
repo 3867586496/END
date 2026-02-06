@@ -23,7 +23,7 @@ class menu{
 
     void handleStartMenuInput(std::string operation,bool  &isContinueGame);
 
-    
+    void handleChooseGameModeMenuInput(std::string operation);
     
 
 
