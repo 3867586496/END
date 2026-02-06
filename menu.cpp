@@ -74,18 +74,21 @@ void menu::readMenuList(){
         menu::readMenuList();
 }
 
-void menu::handleMenuInput(){
+void menu::handleMenuInput(bool &isContinueGame){
     if(menuPosition=="startMenu"){
-        handleStartMenuInput(getInputChoose());
+        handleStartMenuInput(getInputChoose(),isContinueGame);
     }
     
 }
 
-void menu::handleStartMenuInput(std::string operation){
+void menu::handleStartMenuInput(std::string operation,bool &isContinueGame){
     if(operation=="1"){
         menuPosition="chooseGameModeMenu";
         menu::showCurrentMenu();
-    }else{
+    }else if(operation=="5"){
+        isContinueGame = false;
+    }
+    else{
         std::cout<<"非法操作"<<std::endl;
     }
 

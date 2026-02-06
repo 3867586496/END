@@ -2,6 +2,9 @@
 #include<windows.h>
 #include<string>
 #include<iostream>
+
+
+
 void setShowMode(){
 
     SetConsoleCP(CP_UTF8);
@@ -38,7 +41,9 @@ void daylyUpdate(){
 
 */
 
-
+int exitGame(){
+    return 0;
+}
 
 
 

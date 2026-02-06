@@ -19,9 +19,9 @@ class menu{
 
     menu();
 
-    void handleMenuInput();
+    void handleMenuInput(bool &isContinueGame);
 
-    void handleStartMenuInput(std::string operation);
+    void handleStartMenuInput(std::string operation,bool  &isContinueGame);
 
     
     

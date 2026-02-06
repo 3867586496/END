@@ -1,7 +1,5 @@
 #include<iostream>
 #include<string>
-#include<windows.h>
-#include<fstream>
 #include"save.h"
 #include"menu.h"
 #include"gamemainloop.h"
@@ -14,12 +12,16 @@ int main(){
 
     setShowMode();
 
+    bool isContinueGame=1;
     menu mainMenu;
-    while(1){
+
+    while(isContinueGame){
         mainMenu.showCurrentMenu();
         
-        std::string userChoose= getInputChoose();
+        mainMenu.handleMenuInput(isContinueGame);
 
 
     }
+
+    return 0;
 }
