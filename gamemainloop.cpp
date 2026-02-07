@@ -9,8 +9,8 @@
 extern double gameDevelopmentFactor;
 
 void randomInitialization(){
-    std::mt19937 engine(std::chrono::system_clock::now().time_since_epoch().count());
-    std::uniform_int_distribution<int>int_dist(1,1000000);
+    std::mt19937 randomMaker(std::chrono::system_clock::now().time_since_epoch().count());
+    std::uniform_real_distribution<int>probabilityProducer(0,1);
 }
 
 void setShowMode(){

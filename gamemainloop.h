@@ -89,21 +89,27 @@ class bag{
 
 struct chest{
     int level;
+    std::string chestName;
     std::vector<itemDetail> itemDetail;
 };
 
 struct room{
-    std::vector<chest> chest;
-    std::vector<enemy> enemy;
+    std::vector<chest> chestList;
+    std::vector<enemy> enemyList;
+    std::string roomName;
+    int floor;
 };
 
 struct building{
     std::vector<room> roomList;
+    std::string buildingName;
+    int floor;
 };
 
 struct area{
     int areaId;
     std::vector<building> buildingList;
+    std::string areaName;
 };
 
 void calculateGameDevelopmentFactor(gameTime currentTime);

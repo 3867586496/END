@@ -3,4 +3,8 @@
 
 void writeSaveFile();
 
+class save{
+
+};
+
 #endif
