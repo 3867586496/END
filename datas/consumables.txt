@@ -1,0 +1,14 @@
+name:干面包
+level:1
+satiety:15
+thirst:-5
+health:0
+spaceTaken:2
+
+name:瓶装水
+level:1
+satiety:15
+thirst:-5
+health:0
+spaceTaken:2
+

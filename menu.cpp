@@ -56,11 +56,11 @@ void menu::readMenuList(){
             menu::menuList.resize(menuIndex + 1);
         }
         if(temp.substr(0,index)=="thisMenuName"){
-            menu::menuList[menuIndex].thisMenuName=temp.substr(index+1,temp.size());
+            menu::menuList[menuIndex].thisMenuName=temp.substr(index+1);
         }
 
         if(temp.substr(0,index)=="thisMenuContent"){
-            menu::menuList[menuIndex].thisMenuContent=temp.substr(index+1,temp.size());
+            menu::menuList[menuIndex].thisMenuContent=temp.substr(index+1);
         }
         if(menu::menuList[menuIndex].thisMenuName!=""&&menu::menuList[menuIndex].thisMenuContent!=""){
             menuIndex++;
@@ -71,12 +71,12 @@ void menu::readMenuList(){
     inReadMenu.close();
 
     
-    std::cout << "===== 菜单列表读取结果 =====" << std::endl;
-    std::cout << "菜单数量：" << menu::menuList.size() << std::endl;
-    for (size_t i = 0; i < menu::menuList.size(); i++) {
-        std::cout << "索引 " << i << "：name = [" << menu::menuList[i].thisMenuName << "], content = [" << menu::menuList[i].thisMenuContent << "]" << std::endl;
-    }
-    std::cout << "==========================" << std::endl;
+    // std::cout << "===== 菜单列表读取结果 =====" << std::endl;
+    // std::cout << "菜单数量：" << menu::menuList.size() << std::endl;
+    // for (size_t i = 0; i < menu::menuList.size(); i++) {
+    //     std::cout << "索引 " << i << "：name = [" << menu::menuList[i].thisMenuName << "], content = [" << menu::menuList[i].thisMenuContent << "]" << std::endl;
+    // }
+    // std::cout << "==========================" << std::endl;
 }
 
     menu::menu(){
@@ -143,30 +143,41 @@ void menu::handleChooseGameLevelMenuInput(std::string operation){
         gameLevelFactor=0.5;
         if(isEndlessMode){
             menuPosition="gameMainMenu";
+
+            isMainGameRunning=true;
+
         }
     }
     else if(operation=="2"){
         gameLevelFactor=1;
         if(isEndlessMode){
             menuPosition="gameMainMenu";
+
+            isMainGameRunning=true;
         }
     }
     else if(operation=="3"){
         gameLevelFactor=2;
         if(isEndlessMode){
             menuPosition="gameMainMenu";
+
+            isMainGameRunning=true;
         }
     }
     else if(operation=="4"){
         gameLevelFactor=3;
         if(isEndlessMode){
             menuPosition="gameMainMenu";
+
+            isMainGameRunning=true;
         }
     }
     else if(operation=="5"){
         gameLevelFactor=5;
         if(isEndlessMode){
             menuPosition="gameMainMenu";
+
+            isMainGameRunning=true;
         }
     }
     else if(operation=="6"){
@@ -178,6 +189,8 @@ void menu::handleChooseGameLevelMenuInput(std::string operation){
         }
         if(isEndlessMode){
             menuPosition="gameMainMenu";
+
+            isMainGameRunning=true;
         }
     }else{
         std::cout<<"非法操作"<<std::endl;

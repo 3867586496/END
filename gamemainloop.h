@@ -12,29 +12,28 @@ struct gameTime{
     int minute;
 };
 
-
-
-
-
 struct consumables{
     std::string name;
     
-    int quantity;
-    int level;
-    int satiety;
-    int thirst;
-    int health;
-    int spaceTaken;
+    
+
+    int level=1;
+    int satiety=0;
+    int thirst=0;
+    int health=0;
+
+    int spaceTaken=0;
 };
 
 struct weapon{
     std::string name;
     
     int level;
-    int quantity;
+    
     int damage;
     int useStamina;
     bool isRanged;
+    int spaceTaken;
 };
 
 struct armor{
@@ -42,12 +41,17 @@ struct armor{
 
     int level;
     
-    int quantity;
+    
     int armorValue;
+
+    int spaceTaken;
 };
 
 struct material{
     std::string name;
+
+    int spaceTaken;
+
     int level;
 };
 //type指的是前面定义的几类
@@ -61,6 +65,7 @@ struct item{
 
 struct itemDetail{
     item item;
+
     int quantity;
 };
 
@@ -83,6 +88,7 @@ class enemy{
 class character{
 
 };
+
 class bag{
     
 };
@@ -125,4 +131,5 @@ void dailyUpdate();
 
 gameTime timeUpdate(gameTime currentTime,int changedMinute);
 
+void readConsumables(std::vector<consumables> &consumablesList);
 #endif

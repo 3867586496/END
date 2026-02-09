@@ -1,5 +1,4 @@
-#include<iostream>
-#include<string>
+
 #include"save.h"
 #include"menu.h"
 #include"gamemainloop.h"
@@ -14,7 +13,9 @@ bool isMainGameRunning=false;
 
 bool isContinueGame=true;
 
+bool isInitialize=false;
 
+std::vector<consumables> consumablesList;
 int main(){
 
     setShowMode();
@@ -26,7 +27,10 @@ int main(){
         
         mainMenu.handleMenuInput(isContinueGame);
         if(isMainGameRunning){
-
+            if(!isInitialize){
+                initialize();
+            }
+            
         }
 
 
