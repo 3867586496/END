@@ -28,31 +28,31 @@ struct consumables{
 struct weapon{
     std::string name;
     
-    int level;
+    int level=1;
     
-    int damage;
-    int useStamina;
-    bool isRanged;
-    int spaceTaken;
+    int damage=0;
+    int useStamina=0;
+    bool isRanged=0;
+    int spaceTaken=0;
 };
 
 struct armor{
     std::string name;
 
-    int level;
+    int level=0;
     
     
-    int armorValue;
+    int armorValue=0;
 
-    int spaceTaken;
+    int spaceTaken=0;
 };
 
 struct material{
     std::string name;
 
-    int spaceTaken;
+    int spaceTaken=0;
 
-    int level;
+    int level=1;
 };
 //type指的是前面定义的几类
 struct item{
@@ -73,6 +73,13 @@ struct itemDetail{
 设定是200为标准
 
 */
+
+struct attributes{
+    int strength;
+    int agility;  //敏捷
+    int constitution;//体质
+};
+
 class enemy{
     public:
     std::string enemyName;
@@ -91,14 +98,34 @@ class enemy{
 
 class character{
     public:
+    int maxHealth;
+    int currentHeal;
+    
+    int maxSatiety;
+    int currentSatiety;
+
+    int maxThirst;
+    int currentThirst;
+
+    int maxSanity;
+    int currentSanity;
+
+    attributes attributes;
+
+    bag bag;
+
 
 };
 /*
 背包是要以200一级space计数
 
 */
-class bag{
-    
+struct bag{
+    std::vector<itemDetail> itemList;
+
+    int maxCapacity;
+    int currentCapacity;
+
 };
 
 struct chest{
