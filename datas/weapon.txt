@@ -1,0 +1,7 @@
+允许编辑非数值内容，注释不能将变量名和英文冒号连用。
+name:棒球棍
+level:1
+damage:5
+useStamina:5
+isRanged:0
+spaceTaken:5

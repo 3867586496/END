@@ -44,26 +44,34 @@ void menu::readMenuList(){
     if(!inReadMenu){
 
         std::cout<<"文件打开失败"<<std::endl;
-
+        return;
     }
 
     int menuIndex=0;
 
     while(std::getline(inReadMenu,temp)){
-        size_t index=temp.find(":");
+        if(temp==""){
+            menuIndex++;
+            menu::menuList.resize(menuIndex+2);
+            continue;
+        }
+        
+        if(temp.find(":")==-1){
+            continue;
+        }
+
+        size_t conlonIndex=temp.find(":");
 
         if (menuIndex >= menu::menuList.size()) {
             menu::menuList.resize(menuIndex + 1);
         }
-        if(temp.substr(0,index)=="thisMenuName"){
-            menu::menuList[menuIndex].thisMenuName=temp.substr(index+1);
+
+        if(temp.substr(0,conlonIndex)=="thisMenuName"){
+            menu::menuList[menuIndex].thisMenuName=temp.substr(conlonIndex+1);
         }
 
-        if(temp.substr(0,index)=="thisMenuContent"){
-            menu::menuList[menuIndex].thisMenuContent=temp.substr(index+1);
-        }
-        if(menu::menuList[menuIndex].thisMenuName!=""&&menu::menuList[menuIndex].thisMenuContent!=""){
-            menuIndex++;
+        if(temp.substr(0,conlonIndex)=="thisMenuContent"){
+            menu::menuList[menuIndex].thisMenuContent=temp.substr(conlonIndex+1);
         }
         
     }

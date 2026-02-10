@@ -16,6 +16,10 @@ bool isContinueGame=true;
 bool isInitialize=false;
 
 std::vector<consumables> consumablesList;
+std::vector<weapon> weaponList;
+std::vector<armor> armorList;
+std::vector<material> materialList;
+
 int main(){
 
     setShowMode();

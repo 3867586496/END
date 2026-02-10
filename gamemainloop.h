@@ -24,7 +24,7 @@ struct consumables{
 
     int spaceTaken=0;
 };
-
+//增加波动
 struct weapon{
     std::string name;
     
@@ -68,7 +68,11 @@ struct itemDetail{
 
     int quantity;
 };
+/*
+对于生命值，
+设定是200为标准
 
+*/
 class enemy{
     public:
     std::string enemyName;
@@ -88,7 +92,10 @@ class enemy{
 class character{
 
 };
+/*
+背包是要以200一级space计数
 
+*/
 class bag{
     
 };
@@ -132,4 +139,8 @@ void dailyUpdate();
 gameTime timeUpdate(gameTime currentTime,int changedMinute);
 
 void readConsumables(std::vector<consumables> &consumablesList);
+void readWeapon(std::vector<weapon> &weaponList);
+void readArmor(std::vector<armor> &armorList);
+void readMaterial(std::vector<material> &materialList);
+
 #endif

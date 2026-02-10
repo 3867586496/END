@@ -10,6 +10,9 @@
 extern double gameDevelopmentFactor;
 
 extern std::vector<consumables> consumablesList;
+extern std::vector<weapon> weaponList;
+extern std::vector<armor> armorList;
+extern std::vector<material> materialList;
 
 extern bool isInitialize;
 
@@ -53,8 +56,14 @@ std::string getInputChoose(){
 }
 
 void initialize(){
+
     randomInitialization();
+
     readConsumables(consumablesList);
+    readWeapon(weaponList);
+    readWeapon(weaponList);
+    readMaterial(materialList);
+
     isInitialize=true;
 }
 
@@ -97,6 +106,7 @@ gameTime setTime(int day,int hour,int minute){
 void calculateGameDevelopmentFactor(gameTime currentTime){
 
 };
+
 /*
 pattren:
     if(temp.substr(0,conlonIndex)==""){
@@ -114,7 +124,7 @@ void readConsumables(std::vector<consumables> &consumablesList){
     if(!inReadConsumables){
 
         std::cout<<"文件打开失败"<<std::endl;
-
+        return;
     }
 
     int listIndex=0;
@@ -125,6 +135,10 @@ void readConsumables(std::vector<consumables> &consumablesList){
         if(temp==""){
             listIndex++;
             consumablesList.resize(listIndex+2);
+            continue;
+        }
+
+        if(temp.find(":")==-1){
             continue;
         }
 
@@ -163,12 +177,170 @@ void readConsumables(std::vector<consumables> &consumablesList){
 
     inReadConsumables.close();
     //测试
-    std::cout<<listIndex<<std::endl;
-    std::cin.get();
-    std::cin.get();
+    // std::cout<<listIndex<<std::endl;
+    // std::cin.get();
+    // std::cin.get();
 
 }
+void readWeapon(std::vector<weapon> &weaponList){
+    std::string temp;
+    std::ifstream inReadWeapon("datas/weapon.txt",std::ios::in);
 
+    if(!inReadWeapon){
 
+        std::cout<<"文件打开失败"<<std::endl;
+        return;
+    }
 
+    int listIndex=0;
+
+    weaponList.resize(listIndex+2);
+    while(std::getline(inReadWeapon,temp)){
+
+        if(temp==""){
+            listIndex++;
+            weaponList.resize(listIndex+2);
+            continue;
+        }
+        
+        if(temp.find(":")==-1){
+            continue;
+        }
+
+        size_t conlonIndex=temp.find(":");
+
+        if(temp.substr(0,conlonIndex)=="damage"){
+           weaponList[listIndex].damage=stoi(temp.substr(conlonIndex+1));
+        }
+        
+        if(temp.substr(0,conlonIndex)=="isRanged"){
+           weaponList[listIndex].isRanged=stoi(temp.substr(conlonIndex+1));
+        }
+        
+        if(temp.substr(0,conlonIndex)=="level"){
+           weaponList[listIndex].level=stoi(temp.substr(conlonIndex+1));
+        }
+        
+        if(temp.substr(0,conlonIndex)=="name"){
+           weaponList[listIndex].name=temp.substr(conlonIndex+1);
+        }
+        
+        if(temp.substr(0,conlonIndex)=="spaceTaken"){
+           weaponList[listIndex].spaceTaken=stoi(temp.substr(conlonIndex+1));
+        }
+        
+        if(temp.substr(0,conlonIndex)=="useStamina"){
+           weaponList[listIndex].useStamina=stoi(temp.substr(conlonIndex+1));
+        }
+
+    }
+
+    inReadWeapon.close();
+    //测试
+    // std::cout<<listIndex<<std::endl;
+    // std::cin.get();
+    // std::cin.get();
+
+}
+void readArmor(std::vector<armor> &armorList){
+    std::string temp;
+    std::ifstream inReadArmor("datas/armor.txt",std::ios::in);
+
+    if(!inReadArmor){
+
+        std::cout<<"文件打开失败"<<std::endl;
+        return;
+    }
+
+    int listIndex=0;
+
+    armorList.resize(listIndex+2);
+    while(std::getline(inReadArmor,temp)){
+
+        if(temp==""){
+            listIndex++;
+            armorList.resize(listIndex+2);
+            continue;
+        }
+        
+        if(temp.find(":")==-1){
+            continue;
+        }
+
+        size_t conlonIndex=temp.find(":");
+
+        if(temp.substr(0,conlonIndex)=="armorValue"){
+           armorList[listIndex].armorValue=stoi(temp.substr(conlonIndex+1));
+        }
+
+        if(temp.substr(0,conlonIndex)=="level"){
+           armorList[listIndex].level=stoi(temp.substr(conlonIndex+1));
+        }
+
+        if(temp.substr(0,conlonIndex)=="name"){
+           armorList[listIndex].name=temp.substr(conlonIndex+1);
+        }
+
+        if(temp.substr(0,conlonIndex)=="spaceTaken"){
+           armorList[listIndex].spaceTaken=stoi(temp.substr(conlonIndex+1));
+        }
+
+    }
+
+    inReadArmor.close();
+    //测试
+//     std::cout<<listIndex<<std::endl;
+//     std::cin.get();
+//     std::cin.get();
+
+}
+void readMaterial(std::vector<material> &materialList){
+    std::string temp;
+    std::ifstream inReadMaterial("datas/material.txt",std::ios::in);
+
+    if(!inReadMaterial){
+
+        std::cout<<"文件打开失败"<<std::endl;
+        return;
+    }
+
+    int listIndex=0;
+
+    materialList.resize(listIndex+2);
+
+    while(std::getline(inReadMaterial,temp)){
+
+        if(temp==""){
+            listIndex++;
+            materialList.resize(listIndex+2);
+            continue;
+        }
+        
+        if(temp.find(":")==-1){
+            continue;
+        }
+
+        size_t conlonIndex=temp.find(":");
+
+        if(temp.substr(0,conlonIndex)=="name"){
+           materialList[listIndex].name=temp.substr(conlonIndex+1);
+        }
+
+        if(temp.substr(0,conlonIndex)==""){
+           materialList[listIndex].level=stoi(temp.substr(conlonIndex+1));
+        }
+
+        if(temp.substr(0,conlonIndex)==""){
+           materialList[listIndex].spaceTaken=stoi(temp.substr(conlonIndex+1));
+        }
+
+    }
+
+    inReadMaterial.close();
+    //测试
+    // std::cout<<listIndex<<std::endl;
+    // std::cin.get();
+    // std::cin.get();
+
+}
 

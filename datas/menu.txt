@@ -1,8 +1,12 @@
+允许编辑非数值内容，注释不能将变量名和英文冒号连用。
 thisMenuName:startMenu
 thisMenuContent:1.开始游戏 2.继续游戏 3.设置 4.关于 5.退出游戏
+
 thisMenuName:chooseGameModeMenu
 thisMenuContent:1.剧情游戏 2.无尽游戏
+
 thisMenuName:chooseGameLevelMenu
 thisMenuContent:1.简单 2.普通 3.较难 4.地狱 5.不可能 6.自定义
+
 thisMenuName:gameMainMenu
 thisMenuContent:1.显示地图 2.显示背包
