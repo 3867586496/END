@@ -94,7 +94,13 @@ class enemy{
     armor ownArmor;
 };
 
+struct bag{
+    std::vector<itemDetail> itemList;
 
+    int maxCapacity;
+    int currentCapacity;
+
+};
 
 class character{
     public:
@@ -120,13 +126,7 @@ class character{
 背包是要以200一级space计数
 
 */
-struct bag{
-    std::vector<itemDetail> itemList;
 
-    int maxCapacity;
-    int currentCapacity;
-
-};
 
 struct chest{
     int level;

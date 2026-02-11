@@ -189,12 +189,29 @@ void menu::handleChooseGameLevelMenuInput(std::string operation){
         }
     }
     else if(operation=="6"){
+
+        std::cout<<"参考："<<std::endl;
+        std::cout<<"简单：0.5"<<std::endl;
+        std::cout<<"普通：1"<<std::endl;
+        std::cout<<"较难：2"<<std::endl;
+        std::cout<<"地狱：3"<<std::endl;
+        std::cout<<"不可能：5"<<std::endl;
+
+
         std::cout<<"请输入难度："<<std::endl;
-        while(!(std::cin>>gameLevelFactor)){
+
+        
+
+        while(!(std::cin>>gameLevelFactor)||gameLevelFactor<=0||gameLevelFactor>100){
             std::cin.clear();
+
             std::cin.std::istream::ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+
             std::cout<<"请正常输入难度："<<std::endl;
         }
+
+
+
         if(isEndlessMode){
             menuPosition="gameMainMenu";
 
