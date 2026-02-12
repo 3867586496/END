@@ -25,7 +25,7 @@ int main(){
     setShowMode();
 
     menu mainMenu;
-
+    character mainCharacter;
     while(isContinueGame){
         mainMenu.showCurrentMenu();
         

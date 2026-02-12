@@ -114,7 +114,7 @@ pattren:
         }
 
     if(temp.substr(0,conlonIndex)==""){
-           consumablesList[listIndex]=temp.substr(conlonIndex+1);
+           List[listIndex]=temp.substr(conlonIndex+1);
         }
 */
 void readConsumables(std::vector<consumables> &consumablesList){
@@ -344,3 +344,6 @@ void readMaterial(std::vector<material> &materialList){
 
 }
 
+void stratNewgame(){
+    
+}

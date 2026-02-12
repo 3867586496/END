@@ -171,4 +171,5 @@ void readWeapon(std::vector<weapon> &weaponList);
 void readArmor(std::vector<armor> &armorList);
 void readMaterial(std::vector<material> &materialList);
 
+void stratNewgame();
 #endif

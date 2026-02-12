@@ -8,3 +8,7 @@
         //saveFile<<
 }
         */
+
+void loadNewGame(){
+
+}

@@ -3,8 +3,6 @@
 
 void writeSaveFile();
 
-class save{
-
-};
+void loadNewGame();
 
 #endif
