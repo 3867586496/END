@@ -75,9 +75,9 @@ struct itemDetail{
 */
 
 struct attributes{
-    int strength;
-    int agility;  //敏捷
-    int constitution;//体质
+    int strength=10;
+    int agility=10;     //敏捷
+    int constitution=10;//体质
 };
 
 class enemy{
@@ -95,26 +95,29 @@ class enemy{
 };
 
 struct bag{
+
+    int maxCapacity=500;
+    int currentCapacity=0;
+
     std::vector<itemDetail> itemList;
 
-    int maxCapacity;
-    int currentCapacity;
+    
 
 };
 
 class character{
     public:
-    int maxHealth;
-    int currentHeal;
+    int maxHealth=200;
+    int currentHeal=200;
     
-    int maxSatiety;
-    int currentSatiety;
+    int maxSatiety=100;
+    int currentSatiety=100;
 
-    int maxThirst;
-    int currentThirst;
+    int maxThirst=100;
+    int currentThirst=100;
 
-    int maxSanity;
-    int currentSanity;
+    int maxSanity=100;
+    int currentSanity=100;
 
     attributes attributes;
 
